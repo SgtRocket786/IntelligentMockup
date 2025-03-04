@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Academic Advising System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Intelligent Academic Advising</h1>
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <span class="simple-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Course Plan</a></li>
+            <li><a href="#">Advising</a></li>
+            </span>
+            <li class="profile-menu">
+                <button class="profile-button">Profile</button>
+                <div class="profile-dropdown">
+                    <a href="#">View Profile</a>
+                    <a href="#">Sign Out</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <section class="dashboard">
+        <h2>Welcome to Your Academic Planner</h2>
+        <p>Generate your personalized graduation plan and get course recommendations.</p>
+        
+        <div class="form-group">
+            <label for="major">Select Your Major:</label>
+            <select id="major">
+                <option value="computer_science">Computer Science</option>
+                <option value="information_technology">Information Technology</option>
+                <option value="engineering">Engineering</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="completedCourses">Attach your What-If Report:</label>
+            <input type="file" id="completedCourses" value="Select File">
+        </div>
+        
+        <button id="generatePlan">Generate Graduation Plan</button>
+        <div id="result"></div>
+    </section>
+
+    <section class="ai-chat">
+        <h2>Further questions? Ask an AI Advisor.</h2>
+        <div id="chat-container">
+            <div id="chat-output"></div>
+            <input type="text" id="chat-input" placeholder="Type your question here...">
+            <button id="send-button">Send</button>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('generatePlan').addEventListener('click', function() {
+            const major = document.getElementById('major').value;
+            const completedCourses = document.getElementById('completedCourses').value.split(',');
+            
+            let suggestedCourses = [];
+            let creditsLeft = 0;
+            if (major === 'computer_science') {
+                suggestedCourses = ['AI & Machine Learning', 'Software Engineering', 'Cybersecurity'];
+                creditsLeft = 30; // Example value
+            } else if (major === 'information_technology') {
+                suggestedCourses = ['Database Management', 'Networking', 'Cloud Computing'];
+                creditsLeft = 28; // Example value
+            } else if (major === 'engineering') {
+                suggestedCourses = ['Thermodynamics', 'Control Systems', 'Structural Analysis'];
+                creditsLeft = 32; // Example value
+            }
+            
+            document.getElementById('result').innerHTML = `
+                <h3>Suggested Courses:</h3>
+                <ul>${suggestedCourses.map(course => `<li>${course}</li>`).join('')}</ul>
+                <p>You have ${creditsLeft} credits left.</p>
+                <div style="margin-left: 20px;">
+                    <h4>Next Steps:</h4>
+                    <p>1. Review the suggested courses and select the ones you are interested in.</p>
+                    <p>2. Consult with your academic advisor to finalize your graduation plan.</p>
+                    <p>3. Register for the selected courses in the upcoming semester.</p>
+                </div>
+            `;
+        });
+
+        document.getElementById('send-button').addEventListener('click', function() {
+            const userInput = document.getElementById('chat-input').value;
+            const chatOutput = document.getElementById('chat-output');
+            
+            // Dummy AI response
+            const aiResponse = "This is a dummy response from the AI bot.";
+            
+            // Append user input and AI response to the chat output
+            chatOutput.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            chatOutput.innerHTML += `<p><strong>AI Bot:</strong> ${aiResponse}</p>`;
+            
+            // Clear the input field and scroll to the latest message
+            document.getElementById('chat-input').value = '';
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        });
+
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
