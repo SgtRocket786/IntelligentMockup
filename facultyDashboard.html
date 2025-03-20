@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Academic Advising System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Intelligent Academic Advising</h1>
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <span class="simple-links">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="facultyDashboard.html">Dashboard (faculty)</a></li>
+            <li><a href="#">Course Plan</a></li>
+            <li><a href="#">Advising</a></li>
+            </span>
+            <li class="profile-menu">
+                <button class="profile-button">Profile</button>
+                <div class="profile-dropdown">
+                    <a href="#">View Profile</a>
+                    <a href="#">Sign Out</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <section class="dashboard">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'courses')" id="courseButton">Manage Courses</button>
+            <button class="tablinks" onclick="openCity(event, 'requirements')">Major Requirements</button>
+            <button class="tablinks" onclick="openCity(event, 'feature3')">Feature 3</button>
+          </div>
+          <!-- Tab content -->
+          
+            <div id="courses" class="tabcontent">
+              <div class="container">
+                <div class="col-5">
+                <form>
+                  <label for="code">Course Code</label><br>
+                  <input id="code" name="code"><br>
+                  <label for="name">Name</label><br>
+                  <input id="name" name="name"><br>
+                  <label for="credits">Credits</label><br>
+                  <input id="credits" name="credits"><br>
+                  <button id="addCourse">Add Course</button>
+                </form>
+              </div>
+
+              <div class="col-5">
+                <table>
+                  <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                  </tr>
+                  <tr>
+                    <td>CMPSC 462</td>
+                    <td>Data Structures and Algorithms</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>CMPSC 487W</td>
+                    <td>Software Engineering and Desig</td>
+                    <td>3</td>
+                  </tr>
+                </table>
+
+              </div>
+              </div>
+          </div>
+
+          <div id="requirements" class="tabcontent">
+            <div class="container">
+              <div class="col-5">
+              <form>
+                <label for="program">Program Code</label><br>
+                <input id="program" name="program"><br>
+                <label for="code">Course Code</label><br>
+                <input id="code" name="code"><br>
+                <button id="addCourse">Add Requirement</button>
+              </form>
+            </div>
+
+            <div class="col-5">
+              <table>
+                <tr>
+                  <th>Program Code</th>
+                  <th>Pre-Requisite Course IDs</th>
+                </tr>
+                <tr>
+                  <td>CMPAB_BS</td>
+                  <td>ENGL 202C, CMPSC 330, CMPSC 487W</td>
+                </tr>
+              </table>
+
+            </div>
+            </div>
+          </div>
+          
+          <div id="feature3" class="tabcontent">
+            <h3>Feature 3</h3>
+            <p>Another feature</p>
+          </div>
+
+    </section>
+</body>
+</html>
+
+<script>
+  //open first tab default
+    document.getElementById("courseButton").click();
+
+    function openCity(evt, cityName) {
+
+      var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+<style>
+    /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: lightblue;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td {
+  color: #333;
+}
+
+</style>

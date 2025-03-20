@@ -13,6 +13,10 @@ body {
     margin: 0;
     padding: 0;
 }
+.container {
+    display: flex;
+    gap: 20px;
+}
 .navbar {
     background: linear-gradient(135deg, #0056b3, #00a2ff);
     color: white;
